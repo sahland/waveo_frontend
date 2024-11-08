@@ -42,15 +42,16 @@ class AppColorScheme extends ThemeExtension<AppColorScheme> {
     Color? surface,
     Color? background,
     Color? textField,
-    Color?dialogBackgroundColor,
+    Color? dialogBackgroundColor,
   }) {
     return AppColorScheme._(
-      primary: primary ?? this.primary, 
-      secondary: secondary ?? this.secondary, 
-      surface: surface ?? this.surface, 
-      background: background ?? this.background, 
-      textField: textField ?? this.textField, 
-      dialogBackgroundColor: dialogBackgroundColor ?? this.dialogBackgroundColor,
+      primary: primary ?? this.primary,
+      secondary: secondary ?? this.secondary,
+      surface: surface ?? this.surface,
+      background: background ?? this.background,
+      textField: textField ?? this.textField,
+      dialogBackgroundColor:
+          dialogBackgroundColor ?? this.dialogBackgroundColor,
     );
   }
 
@@ -64,14 +65,14 @@ class AppColorScheme extends ThemeExtension<AppColorScheme> {
     }
 
     return AppColorScheme._(
-      primary: Color.lerp(primary, other.primary, t)!, 
-      secondary: Color.lerp(secondary, other.secondary, t)!, 
-      surface: Color.lerp(surface, other.surface, t)!, 
-      background: Color.lerp(background, other.background, t)!, 
-      textField: Color.lerp(textField, other.textField, t)!, 
+      primary: Color.lerp(primary, other.primary, t)!,
+      secondary: Color.lerp(secondary, other.secondary, t)!,
+      surface: Color.lerp(surface, other.surface, t)!,
+      background: Color.lerp(background, other.background, t)!,
+      textField: Color.lerp(textField, other.textField, t)!,
       dialogBackgroundColor: Color.lerp(
-        dialogBackgroundColor, 
-        other.dialogBackgroundColor, 
+        dialogBackgroundColor,
+        other.dialogBackgroundColor,
         t,
       )!,
     );
