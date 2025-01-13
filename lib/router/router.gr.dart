@@ -33,6 +33,18 @@ abstract class _$AppRouter extends RootStackRouter {
         child: WrappedRoute(child: const MainInformationWrapperScreen()),
       );
     },
+    ProfileRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ProfileScreen(),
+      );
+    },
+    ProfileWrapperRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: WrappedRoute(child: const ProfileWrapperScreen()),
+      );
+    },
   };
 }
 
@@ -74,6 +86,34 @@ class MainInformationWrapperRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'MainInformationWrapperRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ProfileScreen]
+class ProfileRoute extends PageRouteInfo<void> {
+  const ProfileRoute({List<PageRouteInfo>? children})
+      : super(
+          ProfileRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ProfileRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ProfileWrapperScreen]
+class ProfileWrapperRoute extends PageRouteInfo<void> {
+  const ProfileWrapperRoute({List<PageRouteInfo>? children})
+      : super(
+          ProfileWrapperRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ProfileWrapperRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

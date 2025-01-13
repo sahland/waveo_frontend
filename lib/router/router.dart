@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:waveo_frontend/features/features.dart';
 import 'package:waveo_frontend/router/main_informaton_routes.dart';
+import 'package:waveo_frontend/router/profile_routes.dart';
 
 part 'router.gr.dart';
 
@@ -12,9 +13,7 @@ class AppRouter extends _$AppRouter {
           page: HomeRoute.page,
           path: '/',
           initial: true,
-          children: [
-            MainInformationRoutes.routes,
-          ],
+          children: [MainInformationRoutes.routes, ProfileRoutes.routes],
         ),
       ];
 }
