@@ -22,23 +22,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            pinned: false,
-            centerTitle: false,
-            floating: true,
-            snap: true,
-            toolbarHeight: toolbarHeight,
-            elevation: elevation,
-            backgroundColor: theme.scaffoldBackgroundColor,
-            surfaceTintColor: theme.scaffoldBackgroundColor,
-            title: Row(
-              children: [
-                SettingsButton(),
-                ThemeButton(),
-              ],
-            )
-          ),
+              pinned: false,
+              centerTitle: false,
+              floating: true,
+              snap: true,
+              toolbarHeight: toolbarHeight,
+              elevation: elevation,
+              backgroundColor: theme.scaffoldBackgroundColor,
+              surfaceTintColor: theme.scaffoldBackgroundColor,
+              title: Row(
+                children: [
+                  SettingsButton(),
+                  ThemeButton(),
+                ],
+              )),
           SliverToBoxAdapter(
-            child: UserInfo(username: 'SaHland', userID: "#sahland",),
+            child: UserInfo(
+              username: 'SaHland',
+              userID: "#sahland",
+              userDateReg: '08.12.2024',
+            ),
           )
         ],
       ),

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:waveo_frontend/features/profile/widgets/widgets.dart';
 
 class UserInfo extends StatefulWidget {
   final String username;
   final String userID;
+  final String userDateReg;
 
   final double width;
   final double height;
@@ -13,6 +15,7 @@ class UserInfo extends StatefulWidget {
   const UserInfo(
       {required this.username,
       required this.userID,
+      required this.userDateReg,
       this.width = 400,
       this.height = 400,
       this.borderRadius = 10,
@@ -31,6 +34,7 @@ class _UserInfoState extends State<UserInfo> {
     const topSizedBoxHeight = 60.0;
     const middleSizedBoxHeight = 55.0;
     const lowSizedBoxHeight = 25.0;
+    const sizedBoxHeight = 20.0;
 
     final theme = Theme.of(context);
 
@@ -43,35 +47,36 @@ class _UserInfoState extends State<UserInfo> {
             ),
             Center(
               child: Container(
-                  width: widget.width,
-                  height: widget.height,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(widget.borderRadius),
-                    ),
-                    color: theme.cardColor,
+                width: widget.width,
+                height: widget.height,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(widget.borderRadius),
                   ),
-                  child: Align(
-                    alignment: const Alignment(0.85, 0),
-                    child: Column(
-                      children: [
-                        const SizedBox(
-                          height: middleSizedBoxHeight,
-                        ),
-                        _infoText(
-                          theme,
-                          widget.username,
-                          usernameFontSize,
-                        ),
-                        _infoText(
-                          theme,
-                          widget.userID,
-                          userIdFontSize,
-                        ),
-                      ],
+                  color: theme.cardColor,
+                ),
+                child: Column(
+                  children: [
+                    _userMainInfo(
+                      middleSizedBoxHeight,
+                      theme,
+                      usernameFontSize,
+                      userIdFontSize,
                     ),
-                  )),
-            )
+                    ProfileRedactButton(),
+                    const SizedBox(
+                      height: sizedBoxHeight,
+                    ),
+                    DateAccountInfo(
+                      accountRegDate: widget.userDateReg,
+                    ),
+                    const SizedBox(
+                      height: lowSizedBoxHeight,
+                    )
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
         _userAvatar(theme, '')
@@ -79,13 +84,44 @@ class _UserInfoState extends State<UserInfo> {
     );
   }
 
+  Align _userMainInfo(
+    double middleSizedBoxHeight,
+    ThemeData theme,
+    double usernameFontSize,
+    double userIdFontSize, [
+    double xAlign = 0.83,
+    double yAlign = 0,
+  ]) {
+    return Align(
+      alignment: Alignment(xAlign, yAlign),
+      child: Column(
+        children: [
+          SizedBox(
+            height: middleSizedBoxHeight,
+          ),
+          _infoText(
+            theme,
+            widget.username,
+            usernameFontSize,
+          ),
+          _infoText(
+            theme,
+            widget.userID,
+            userIdFontSize,
+          ),
+        ],
+      ),
+    );
+  }
+
   Column _userAvatar(
-    ThemeData theme, 
-    String imagePath,
-    [double avatarRadius = 45,
+    ThemeData theme,
+    String imagePath, [
+    double avatarRadius = 45,
     double outlineBorder = 8,
     double xAlign = 0.8,
-    double yAlign = 0,]) {
+    double yAlign = 0,
+  ]) {
     const sizedBoxHeight = 10.0;
 
     return Column(
@@ -116,9 +152,10 @@ class _UserInfoState extends State<UserInfo> {
       text,
       textAlign: TextAlign.left,
       style: GoogleFonts.inter(
-          color: theme.primaryColor,
-          fontSize: fontSize,
-          fontWeight: FontWeight.w500),
+        color: theme.primaryColor,
+        fontSize: fontSize,
+        fontWeight: FontWeight.w500,
+      ),
     );
   }
 }
